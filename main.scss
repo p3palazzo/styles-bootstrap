@@ -379,6 +379,10 @@ tfoot,
   }
 }
 
+.lead {
+  @extend .fw-medium;
+}
+
 #site-nav ul,
 .sidebar,
 .author__profile,
