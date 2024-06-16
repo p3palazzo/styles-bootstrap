@@ -256,6 +256,10 @@ table {
   }
 }
 
+.row > article {
+  @extend .mt-0;
+}
+
 // figures and quotes {{{3
 section > figure {
   @extend .figure;
