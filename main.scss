@@ -221,6 +221,9 @@ $legend-font-weight:   500;
 // Utilities
 @import "bootstrap/scss/utilities/api";
 
+// Bootstrap TOC plugin
+@import url('https://cdn.rawgit.com/afeld/bootstrap-toc/v1.0.1/dist/bootstrap-toc.min.css');
+
 
 /* ==========================================================================
    Custom styles {{{1
@@ -931,5 +934,27 @@ label.margin-toggle:not(.sidenote-number) {
 .tl-slidenav-title {
   color: var(--bs-body-color) !important;
   text-shadow: 1px 1px var(--bs-body-background) !important;
+}
+// TOC {{{3
+#toc {
+  a {
+    @extend .fs-6;
+    @extend .py-0;
+    &.nav-link:hover {
+      border-left: 0;
+    }
+  }
+  .nav {
+    @extend .mx-0;
+    > li {
+      @extend .w-100;
+      > a {
+        @extend .px-0;
+      }
+    }
+  }
+  > .nav {
+    @extend .sidebar__nav;
+  }
 }
 // vim: shiftwidth=2 tabstop=2 expandtab foldmethod=marker nowrap
