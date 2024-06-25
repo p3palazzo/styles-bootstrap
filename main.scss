@@ -441,6 +441,9 @@ h3.card-title,
 
 .author__profile,
 .author__profile li {
+  .author__bio {
+    @extend .text-secondary;
+  }
   a {
     @extend .link-body-emphasis;
     @extend .text-decoration-none;
