@@ -621,7 +621,7 @@ section > hr { // invisible border to separate .newthought sections
   @extend .border-0;
 }
 
-h3 {
+section > h3 {
   @include media-breakpoint-up(lg) {
     visibility: hidden;
   }
