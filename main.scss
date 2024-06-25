@@ -345,8 +345,12 @@ dt {
   @extend .fw-medium;
 }
 
-main .row > ul li::marker {
-  content: "– ";
+article li::marker {
+  content: "› ";
+}
+
+small {
+  @extend .fw-medium;
 }
 
 .capitalize-first {
@@ -354,10 +358,6 @@ main .row > ul li::marker {
   &:first-letter {
     text-transform: uppercase;
   }
-}
-
-small {
-  @extend .fw-medium;
 }
 
 // table {{{3
