@@ -832,15 +832,49 @@ label.margin-toggle:not(.sidenote-number) {
   @extend .text-secondary;
 }
 
-// subfigures {{{3
-.subfigures > figcaption {
-  @extend .col-lg-4;
-  @extend .float-lg-end;
-  p {
-    @extend .text-start;
+// figures and subfigures {{{2
+.full {
+  clear: both;
+  img {
+    @extend .mb-2;
+    max-width: 150%;
   }
 }
 
+.inset + figcaption {
+  margin-right: 0;
+}
+
+// Compatibility with Reveal.js {{{2
+.incremental,
+.notes {
+  @extend p;
+}
+
+.columns {
+  @extend .g-3;
+  @extend .row;
+  @include media-breakpoint-up(lg) {
+    width: 150%;
+  }
+  &:not(.subfigures) figcaption {
+    @extend .ps-3;
+    @extend .col-md-12;
+    @extend .col-lg-8;
+  }
+  figcaption p {
+    @extend .col-lg-4;
+    @extend .me-lg-0;
+  }
+}
+
+.column {
+  @extend .float-md-start;
+  figure img {
+    @extend .col-md-12;
+    @extend .col-lg-12;
+  }
+}
 
 // Custom classes {{{2
 // hero {{{3
@@ -903,6 +937,10 @@ label.margin-toggle:not(.sidenote-number) {
   @extend .p-0;
 }
 
+.smallcaps {
+  font-variant: all-small-caps;
+}
+
 // image {{{3
 .line {
   @extend .border-0;
@@ -916,9 +954,21 @@ label.margin-toggle:not(.sidenote-number) {
   @extend .d-flex;
   @extend .col-md-4;
   @extend .align-items-center;
-  @extend .text-body-secondary;
+  @extend .text-secondary;
+  a {
+    @extend .mb-3;
+    @extend .me-2;
+    @extend .mb-md-0;
+    @extend .lh-1;
+    @extend .link-secondary;
+    @extend .text-decoration-none;
+    font-variant: all-small-caps;
+  }
+  .copy {
+    @extend .mb-3;
+    @extend .mb-md-0;
+  }
 }
-
 // TimelineJS {{{3
 .tl-timeline,
 .tl-slider-background {
