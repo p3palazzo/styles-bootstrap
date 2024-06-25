@@ -41,8 +41,9 @@ $theme-colors: (
 $body-color:           #111118;
 $body-bg:              #fffff8;
 $primary:              $blue-800;
+$success:              #7952b3;
 $light:                #fcf9e6;
-$body-emphasis-color:  $primary;
+$body-emphasis-color:  $gray-800;
 $link-decoration:      none;
 $border-radius:        .4rem;
 
@@ -50,6 +51,9 @@ $link-color:           $primary;
 $link-hover-color:     $blue-900;
 $component-active-bg:  $primary;
 $pagination-active-bg: $primary;
+
+$link-color-dark:       tint-color($body-tertiary-color, 40%);
+$link-hover-color-dark: shift-color($link-color-dark, -$link-shade-percentage);
 
 
 /* ==========================================================================
@@ -59,38 +63,6 @@ $pagination-active-bg: $primary;
 @import url("https://use.typekit.net/hny1sfi.css");
 @import url("https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css");
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css");
-
-@font-face {
-    font-family: 'Weiss Std'; // Weiss Std normal italic {{{2
-    src: url('https://tradicional.arq.br/assets/fonts/weissstd-italic-webfont.woff2') format('woff2'),
-         url('https://tradicional.arq.br/assets/fonts/weissstd-italic-webfont.woff') format('woff');
-    font-weight: normal;
-    font-style: italic;
-}
-
-@font-face {
-    font-family: 'Weiss Std'; // Weiss Std bold {{{2
-    src: url('https://tradicional.arq.br/assets/fonts/weissstd-bold-webfont.woff2') format('woff2'),
-         url('https://tradicional.arq.br/assets/fonts/weissstd-bold-webfont.woff') format('woff');
-    font-weight: bold;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'Weiss Std'; // Weiss Std extra bold {{{2
-    src: url('https://tradicional.arq.br/assets/fonts/weissstd-extrabold-webfont.woff2') format('woff2'),
-         url('https://tradicional.arq.br/assets/fonts/weissstd-extrabold-webfont.woff') format('woff');
-    font-weight: bolder;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'Weiss Std'; // Weiss Std regular {{{2
-    src: url('https://tradicional.arq.br/assets/fonts/weissstd-webfont.woff2') format('woff2'),
-         url('https://tradicional.arq.br/assets/fonts/weissstd-webfont.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
 
 @font-face { // UnB Pro 900 {{{2
   font-family: "UnB Pro";
@@ -161,16 +133,15 @@ $pagination-active-bg: $primary;
 
 // Font variables {{{2
 $font-family-serif:    "eb-garamond", "et-book", Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
-$font-family-unb:      "UnB Pro", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !default;
-$font-family-narrow:   "open-sans-condensed", "league-gothic", "Arial Narrow", sans-serif;
+$font-family-sans-serif: "UnB Pro", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !default;
+$font-family-narrow:     "kepler-std-semicondensed-dis", "league-gothic-condensed", "Arial Narrow", sans-serif;
 
-$font-family-base:     $font-family-unb;
-$headings-font-family: 'Weiss Std', Georgia, serif;
-$headings-font-weight: 700;
+$font-family-base:     $font-family-serif;
+$headings-font-family: "cormorant-garamond", "eb-garamond", Georgia, Times, serif;
+$headings-font-weight: 300;
 $headings-font-style:  normal;
 $headings-color:       $body-color;
 $legend-font-weight:   500;
-
 
 /* ==========================================================================
    Imports {{{1
@@ -298,36 +269,30 @@ h4,
 h5,
 h6 {
   @extend .w-auto;
-  @extend .fw-light;
-}
-
-.subtitle,
-h1,
-h2,
-h3 {
-  font-family: $headings-font-family;
-  font-variant-numeric: lining-nums;
-}
-
-article > h2,
-article > section > h2 {
-  @extend .text-center;
-  color: $primary;
-  @media (prefers-color-scheme: dark) {
-    color: $light;
-  }
 }
 
 article {
   font-size: 1.3rem;
   font-family: $font-family-serif;
-  h2:not(first-of-type) {
-    @extend .mt-5;
-  }
   a:not(.btn) {
     color: inherit;
     text-decoration: underline;
   }
+  h2 {
+    @extend .display-5;
+  }
+  h3 {
+    @extend .fst-italic;
+    font-family: $font-family-base;
+  }
+  p {
+    hyphens: auto;
+  }
+}
+
+form,
+input {
+  font-family: $font-family-sans-serif;
 }
 
 // lists {{{3
@@ -375,25 +340,25 @@ tfoot,
   @extend .lh-1;
   @extend .fs-5;
   @extend .text-decoration-none;
-  @extend .text-primary-emphasis;
   @extend .link-body-emphasis;
-  font-family: $headings-font-family;
+  font-variant: all-small-caps;
   .site-subtitle {
     @extend .fst-italic;
-    padding-left: 0.5rem !important;
+    font-variant: normal;
+    font-variant-numeric: oldstyle-nums;
   }
 }
 
 .lead {
   @extend .fw-medium;
+  @extend .fst-italic;
 }
 
 #site-nav ul,
 .sidebar,
 .author__profile,
-.toc,
-.page-footer {
-  @extend .text-body-secondary;
+.toc {
+  @extend .text-secondary;
   @extend .fw-light;
   font-family: $font-family-narrow;
   a {
@@ -404,16 +369,35 @@ tfoot,
 
 #site-nav ul {
   @extend .fs-5;
+  i {
+    @extend .px-2;
+    @extend .fs-4;
+  }
 }
 
 .subtitle {
   @extend .display-6;
+  @extend .fst-italic;
+  font-family: $headings-font-family;
 }
 
 // Card {{{3
+.capitalize-first {
+  @extend .d-inline-block;
+  &:first-letter {
+    text-transform: uppercase;
+  }
+}
+
+.card,
+.paginator {
+  font-family: $font-family-sans-serif;
+}
+
 h3.card-title,
 .btn {
   @extend .fst-normal;
+  font-family: $font-family-narrow;
   a {
     @extend .link-body-emphasis;
     @extend .text-decoration-none;
@@ -422,10 +406,6 @@ h3.card-title,
 
 .card-header,
 .card-footer {
-  font-family: $font-family-narrow;
-}
-
-.card-text {
   @extend .fw-medium;
   @extend .text-secondary;
 }
@@ -454,7 +434,6 @@ h3.card-title,
   @extend .text-secondary;
 }
 
-
 // Quote {{{3
 figcaption,
 blockquote > footer {
@@ -478,7 +457,6 @@ q {
   @extend .border-bottom;
   @extend .align-items-center;
   @extend .justify-content-center;
-  @extend .text-center;
   @extend .bg-body-tertiary;
   background-size: cover;
   background-position: center;
@@ -497,10 +475,14 @@ q {
       text-shadow: 1px 1px 2px rgba($body-bg-dark, 70%);
     }
   }
+  .lead {
+    @extend .col-lg-8;
+    @extend .ms-0;
+  }
 }
 
-#bibliography {
-  @extend .h2;
+#site-nav ul.nav a {
+  @extend .link-secondary;
 }
 
 // Bootstrap Classes {{{2
@@ -522,6 +504,10 @@ ul.nav,
   @extend .mb-3;
   @extend .mb-lg-1;
   @extend .me-2;
+  .site-subtitle {
+    @extend .d-inline;
+    @extend .ps-1;
+  }
 }
 
 ul.nav {
@@ -550,13 +536,6 @@ ul.nav {
   }
 }
 
-.site-title {
-  .site-subtitle {
-    @extend .d-inline;
-    @extend .ps-3;
-  }
-}
-
 // Bootstrap specs <blockquote> wrapped in <figure>. {{{3
 blockquote > footer,
 blockquote + figcaption {
@@ -579,29 +558,9 @@ blockquote > footer {
   width: 100%;
 }
 
-.card-header {
+.card-header,
+.page-footer {
   @extend .fw-medium;
-}
-
-.btn {
-  font-family: $font-family-unb;
-}
-
-.btn-outline-primary {
-  @media (prefers-color-scheme: dark) {
-    border-color: $blue-400;
-    color: $blue-400;
-  }
-}
-
-.btn-primary {
-  @media (prefers-color-scheme: dark) {
-    .background-color: $blue-400;
-  }
-}
-
-.ratio img {
-  @extend .object-fit-cover;
 }
 
 // Footer {{{3
@@ -625,15 +584,24 @@ main {
 
 article {
   @extend .g-3;
+  > section {
+    @extend .mt-5;
+    &:first-of-type {
+      @extend .mt-0;
+    }
+  }
 }
 
-article > section:not(.wide),
+.row:not(.wide) > article > section,
 .lead {
   @extend .col-lg-8;
   h2 {
     @extend .ms-0;
     @extend .clearfix;
-    @include media-breakpoint-up(lg) {
+  }
+  @include media-breakpoint-up(lg) {
+    h2,
+    .wide {
       width: 150% !important;
     }
   }
@@ -649,8 +617,14 @@ article > section:not(.wide),
 }
 
 // typography {{{3
-hr.clearfix { // invisible border to separate .newthought sections
+section > hr { // invisible border to separate .newthought sections
   @extend .border-0;
+}
+
+h3 {
+  @include media-breakpoint-up(lg) {
+    visibility: hidden;
+  }
 }
 
 h5 { // semantic emulation of .newthought
