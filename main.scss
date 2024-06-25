@@ -690,20 +690,10 @@ h5 { // semantic emulation of .newthought
   text-indent: -1.3rem;
 }
 
-// Marginalia {{{3
-.aside {
-  @extend .col-md-4;
-  @extend .col-lg-3;
-  @extend .float-lg-end;
-  clear: right;
-  * {
-    @extend .w-100;
-  }
-}
-
+// Sidebar {{{3
 .sidebar,
 .author__profile,
-.toc {
+#toc {
   ul {
     @extend .list-unstyled;
     &.sidebar__nav > li {
@@ -717,11 +707,13 @@ h5 { // semantic emulation of .newthought
   @extend .order-first;
   @extend .d-md-flex;
   @extend .flex-column;
-  @extend .flex-shrink-1;
+  @extend .flex-grow-1;
+  @extend .sticky-md-top;
   @extend .me-5;
   @extend .ms-auto;
   @extend .ps-5;
   @extend .opacity-50;
+  align-self: flex-start;
   &:hover {
     @extend .opacity-100;
   }
@@ -730,8 +722,8 @@ h5 { // semantic emulation of .newthought
 .sidebar,
 .col.author__profile {
   @include media-breakpoint-up(lg) {
-    width: 250px;
-    max-width: 250px;
+    width: 300px;
+    max-width: 300px;
   }
   i + .label {
     @extend .ps-2;
@@ -782,19 +774,34 @@ h5 { // semantic emulation of .newthought
     transform: none;
     visibility: visible;
   }
-  @include media-breakpoint-up(lg) { // {{{3
+}
+
+.aside, // {{{3
+section > figure > figcaption,
+.full figcaption,
+figcaption p,
+.sidenote,
+.marginnote {
+  @include media-breakpoint-up(lg) {
     display: block;
-    padding: 0 0 0 1rem;
     float: right;
     clear: right;
     margin-right: -50%;
     width: 50%;
+    padding: 0 0 0 1rem;
   }
 }
 
+.aside * {
+  @extend .w-100;
+  @extend .me-0;
+  @extend .ps-0;
+}
+
 .sidenote-number { // {{{3
-  @extend .mx-1;
   @extend sup;
+  @extend .mx-1;
+  @extend .fw-medium;
   font-family: inherit;
   counter-increment: sidenote-counter;
   &:after {
