@@ -766,6 +766,13 @@ figcaption p,
   }
 }
 
+figcaption .sidenote {
+  @include media-breakpoint-up(lg) {
+    margin-right: 0;
+    width: calc( 100% + 0.75rem);
+  }
+}
+
 .aside * {
   @extend .w-100;
   @extend .me-0;
